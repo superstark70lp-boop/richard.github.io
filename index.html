@@ -1,11 +1,783 @@
 <!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>My site</title>
-  </head>
-  <body>
-    <h1>Hello, world</h1>
-    <p>This is my GitHub website.</p>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Citizen Watch Repair | Precision Service</title>
+  <meta name="description" content="Independent specialist in Citizen watch repair, battery replacement, Eco-Drive service, bracelet repair, crystal replacement, and diagnostics." />
+  <style>
+    :root{
+      --bg:#0f1115;
+      --bg-soft:#171a20;
+      --card:#1d2129;
+      --text:#f5f2ea;
+      --muted:#b8b2a6;
+      --accent:#c9a86a;
+      --accent-2:#f0d9a1;
+      --line:rgba(255,255,255,.08);
+      --shadow:0 18px 50px rgba(0,0,0,.28);
+      --radius:20px;
+      --max:1150px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at top right, rgba(201,168,106,.18), transparent 28%),
+        radial-gradient(circle at left center, rgba(201,168,106,.08), transparent 24%),
+        linear-gradient(180deg, #0b0d11 0%, #11151b 100%);
+      line-height:1.6;
+    }
+
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    .container{
+      width:min(calc(100% - 2rem), var(--max));
+      margin-inline:auto;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:14px 22px;
+      border-radius:999px;
+      font-weight:700;
+      transition:.25s ease;
+      border:1px solid transparent;
+    }
+
+    .btn-primary{
+      background:linear-gradient(135deg, var(--accent), var(--accent-2));
+      color:#17130c;
+      box-shadow:0 10px 25px rgba(201,168,106,.25);
+    }
+
+    .btn-primary:hover{transform:translateY(-2px)}
+    .btn-secondary{
+      border-color:rgba(255,255,255,.15);
+      background:rgba(255,255,255,.03);
+      color:var(--text);
+    }
+
+    .btn-secondary:hover{
+      background:rgba(255,255,255,.06);
+      transform:translateY(-2px);
+    }
+
+    header{
+      position:sticky;
+      top:0;
+      z-index:100;
+      backdrop-filter:blur(12px);
+      background:rgba(10,12,16,.68);
+      border-bottom:1px solid var(--line);
+    }
+
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:14px 0;
+      gap:1rem;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:.9rem;
+      font-weight:800;
+      letter-spacing:.04em;
+    }
+
+    .brand-mark{
+      width:42px;
+      height:42px;
+      border-radius:12px;
+      background:linear-gradient(135deg, #dbc08a, #9c7841);
+      color:#15110a;
+      display:grid;
+      place-items:center;
+      font-weight:900;
+      box-shadow:var(--shadow);
+    }
+
+    .nav-links{
+      display:flex;
+      gap:1.2rem;
+      flex-wrap:wrap;
+      color:var(--muted);
+      font-size:.97rem;
+    }
+
+    .nav-links a:hover{color:var(--text)}
+
+    .hero{
+      padding:84px 0 56px;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.2fr .8fr;
+      gap:2rem;
+      align-items:center;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:.55rem;
+      padding:8px 14px;
+      border:1px solid rgba(201,168,106,.28);
+      border-radius:999px;
+      color:var(--accent-2);
+      background:rgba(201,168,106,.08);
+      font-size:.92rem;
+      margin-bottom:1rem;
+    }
+
+    h1{
+      font-size:clamp(2.3rem, 5vw, 4.6rem);
+      line-height:1.02;
+      margin:.2rem 0 1rem;
+      letter-spacing:-.03em;
+    }
+
+    .hero p{
+      color:var(--muted);
+      font-size:1.08rem;
+      max-width:62ch;
+      margin-bottom:1.5rem;
+    }
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:.9rem;
+      margin-bottom:1.7rem;
+    }
+
+    .trust{
+      display:flex;
+      flex-wrap:wrap;
+      gap:1rem 1.5rem;
+      color:var(--muted);
+      font-size:.96rem;
+    }
+
+    .hero-card{
+      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border:1px solid var(--line);
+      border-radius:28px;
+      padding:1.1rem;
+      box-shadow:var(--shadow);
+    }
+
+    .watch-visual{
+      aspect-ratio:4/5;
+      border-radius:22px;
+      background:
+        radial-gradient(circle at 50% 38%, rgba(255,255,255,.16), transparent 30%),
+        radial-gradient(circle at 50% 50%, rgba(201,168,106,.18), transparent 44%),
+        linear-gradient(160deg, #242934 0%, #14181f 100%);
+      display:grid;
+      place-items:center;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .watch{
+      width:230px;
+      height:230px;
+      border-radius:50%;
+      border:10px solid #2e3440;
+      background:
+        radial-gradient(circle at 50% 50%, #fcfbf8 0 60%, #e5dccd 61% 63%, #ffffff 64% 100%);
+      box-shadow:
+        0 0 0 10px rgba(201,168,106,.18),
+        0 25px 50px rgba(0,0,0,.32);
+      position:relative;
+    }
+
+    .watch::before,
+    .watch::after{
+      content:"";
+      position:absolute;
+      left:50%;
+      transform:translateX(-50%);
+      width:90px;
+      height:54px;
+      background:linear-gradient(180deg, #7f6440, #3e2f1c);
+      z-index:-1;
+    }
+
+    .watch::before{top:-56px;border-radius:18px 18px 8px 8px}
+    .watch::after{bottom:-56px;border-radius:8px 8px 18px 18px}
+
+    .center-dot{
+      position:absolute;
+      inset:50% auto auto 50%;
+      transform:translate(-50%,-50%);
+      width:12px;
+      height:12px;
+      border-radius:50%;
+      background:#1d1d1d;
+    }
+
+    .hand{
+      position:absolute;
+      left:50%;
+      top:50%;
+      transform-origin:bottom center;
+      border-radius:999px;
+    }
+
+    .hand.hour{
+      width:8px;
+      height:60px;
+      background:#2a2a2a;
+      transform:translate(-50%,-100%) rotate(35deg);
+    }
+
+    .hand.minute{
+      width:5px;
+      height:84px;
+      background:var(--accent);
+      transform:translate(-50%,-100%) rotate(140deg);
+    }
+
+    .watch-label{
+      position:absolute;
+      top:26px;
+      left:50%;
+      transform:translateX(-50%);
+      font-size:.78rem;
+      letter-spacing:.32em;
+      color:#6f634f;
+      font-weight:800;
+    }
+
+    .ticks span{
+      position:absolute;
+      left:50%;
+      top:50%;
+      width:4px;
+      height:95px;
+      transform-origin:center top;
+    }
+
+    .ticks span::before{
+      content:"";
+      display:block;
+      width:3px;
+      height:12px;
+      background:#6f6a61;
+      margin-inline:auto;
+      border-radius:2px;
+    }
+
+    .section{
+      padding:34px 0 74px;
+    }
+
+    .section-title{
+      font-size:clamp(1.7rem, 3vw, 2.7rem);
+      margin:0 0 .6rem;
+      letter-spacing:-.03em;
+    }
+
+    .section-text{
+      color:var(--muted);
+      max-width:70ch;
+      margin:0 0 2rem;
+    }
+
+    .grid-3{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:1.2rem;
+    }
+
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:1.3rem;
+      box-shadow:var(--shadow);
+    }
+
+    .card h3{
+      margin:.35rem 0 .45rem;
+      font-size:1.1rem;
+    }
+
+    .card p{
+      margin:0;
+      color:var(--muted);
+    }
+
+    .icon{
+      width:46px;
+      height:46px;
+      border-radius:14px;
+      display:grid;
+      place-items:center;
+      background:rgba(201,168,106,.12);
+      color:var(--accent-2);
+      border:1px solid rgba(201,168,106,.18);
+      font-size:1.2rem;
+    }
+
+    .about{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:1.4rem;
+    }
+
+    .stats{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:1rem;
+      margin-top:1.1rem;
+    }
+
+    .stat{
+      background:rgba(255,255,255,.03);
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:1rem;
+      text-align:center;
+    }
+
+    .stat strong{
+      display:block;
+      font-size:1.35rem;
+      color:var(--accent-2);
+    }
+
+    .steps{
+      display:grid;
+      grid-template-columns:repeat(4, 1fr);
+      gap:1rem;
+    }
+
+    .step-num{
+      display:inline-grid;
+      place-items:center;
+      width:34px;
+      height:34px;
+      border-radius:50%;
+      background:linear-gradient(135deg, var(--accent), var(--accent-2));
+      color:#18120a;
+      font-weight:900;
+      margin-bottom:.9rem;
+    }
+
+    .testimonials{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:1rem;
+    }
+
+    blockquote{
+      margin:0;
+      color:var(--muted);
+      font-size:1rem;
+    }
+
+    .quote-name{
+      margin-top:1rem;
+      color:var(--text);
+      font-weight:700;
+    }
+
+    .contact{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:1.4rem;
+    }
+
+    .contact-list{
+      display:grid;
+      gap:.9rem;
+      margin-top:1.2rem;
+    }
+
+    .contact-item{
+      display:flex;
+      gap:.9rem;
+      align-items:flex-start;
+      padding:1rem;
+      background:rgba(255,255,255,.03);
+      border:1px solid var(--line);
+      border-radius:16px;
+    }
+
+    .hours{
+      display:grid;
+      gap:.7rem;
+    }
+
+    .hours-row{
+      display:flex;
+      justify-content:space-between;
+      gap:1rem;
+      padding:.8rem 0;
+      border-bottom:1px solid var(--line);
+      color:var(--muted);
+    }
+
+    .hours-row strong{color:var(--text)}
+
+    footer{
+      padding:30px 0 50px;
+      color:var(--muted);
+      border-top:1px solid var(--line);
+    }
+
+    .footer-inner{
+      display:flex;
+      justify-content:space-between;
+      gap:1rem;
+      flex-wrap:wrap;
+    }
+
+    @media (max-width: 980px){
+      .hero-grid,
+      .about,
+      .contact,
+      .grid-3,
+      .steps,
+      .testimonials{
+        grid-template-columns:1fr;
+      }
+
+      .stats{
+        grid-template-columns:1fr;
+      }
+
+      .nav{
+        align-items:flex-start;
+        flex-direction:column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a href="#top" class="brand">
+        <div class="brand-mark">CW</div>
+        <div>
+          <div>Citizen Watch Repair</div>
+          <div style="font-size:.78rem;color:var(--muted);font-weight:600;">Independent Specialist</div>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#process">Process</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Precision repairs for Citizen watches</div>
+          <h1>Reliable service for the watch you wear every day.</h1>
+          <p>
+            Battery changes, Eco-Drive diagnostics, bracelet repairs, crystal replacement,
+            waterproof testing, and full inspection for Citizen timepieces. Careful workmanship,
+            clear advice, and honest service from start to finish.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#contact">Book a Repair</a>
+            <a class="btn btn-secondary" href="tel:+43123456789">Call Now</a>
+          </div>
+
+          <div class="trust">
+            <span>✓ Fast turnaround</span>
+            <span>✓ Clear pricing</span>
+            <span>✓ Careful diagnostics</span>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div class="watch-visual">
+            <div class="watch">
+              <div class="watch-label">CITIZEN</div>
+              <div class="ticks">
+                <span style="transform:translate(-50%,-50%) rotate(0deg)"></span>
+                <span style="transform:translate(-50%,-50%) rotate(30deg)"></span>
+                <span style="transform:translate(-50%,-50%) rotate(60deg)"></span>
+                <span style="transform:translate(-50%,-50%) rotate(90deg)"></span>
+                <span style="transform:translate(-50%,-50%) rotate(120deg)"></span>
+                <span style="transform:translate(-50%,-50%) rotate(150deg)"></span>
+                <span style="transform:translate(-50%,-50%) rotate(180deg)"></span>
+                <span style="transform:translate(-50%,-50%) rotate(210deg)"></span>
+                <span style="transform:translate(-50%,-50%) rotate(240deg)"></span>
+                <span style="transform:translate(-50%,-50%) rotate(270deg)"></span>
+                <span style="transform:translate(-50%,-50%) rotate(300deg)"></span>
+                <span style="transform:translate(-50%,-50%) rotate(330deg)"></span>
+              </div>
+              <div class="hand hour"></div>
+              <div class="hand minute"></div>
+              <div class="center-dot"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="container">
+        <h2 class="section-title">Services</h2>
+        <p class="section-text">
+          From simple battery replacements to more detailed diagnostics, the goal is to keep
+          your Citizen watch accurate, dependable, and ready to wear.
+        </p>
+
+        <div class="grid-3">
+          <article class="card">
+            <div class="icon">⌚</div>
+            <h3>Battery Replacement</h3>
+            <p>Quick battery service with careful case handling and seal inspection where needed.</p>
+          </article>
+
+          <article class="card">
+            <div class="icon">☀️</div>
+            <h3>Eco-Drive Diagnostics</h3>
+            <p>Testing for charging issues, power reserve problems, and movement performance.</p>
+          </article>
+
+          <article class="card">
+            <div class="icon">💎</div>
+            <h3>Crystal Replacement</h3>
+            <p>Replacement of scratched or damaged glass to restore clarity and appearance.</p>
+          </article>
+
+          <article class="card">
+            <div class="icon">🔩</div>
+            <h3>Bracelet & Clasp Repair</h3>
+            <p>Adjustment, link fitting, spring bar replacement, and clasp troubleshooting.</p>
+          </article>
+
+          <article class="card">
+            <div class="icon">🌊</div>
+            <h3>Water Resistance Check</h3>
+            <p>Gasket inspection and pressure testing where appropriate after service work.</p>
+          </article>
+
+          <article class="card">
+            <div class="icon">🛠️</div>
+            <h3>General Inspection</h3>
+            <p>Assessment of the movement, crown, pushers, seals, and overall condition.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container about">
+        <div class="card">
+          <h2 class="section-title" style="margin-top:0;">Why customers choose us</h2>
+          <p class="section-text" style="margin-bottom:1rem;">
+            Watches are personal. They mark routines, milestones, and memories. That’s why every
+            repair is handled with attention to detail, straightforward communication, and respect
+            for the original watch.
+          </p>
+          <p style="color:var(--muted);margin:0;">
+            Whether it’s a daily Eco-Drive model, a dress watch, or a long-owned favorite, the focus
+            is always the same: careful work and dependable results.
+          </p>
+
+          <div class="stats">
+            <div class="stat">
+              <strong>Fast</strong>
+              Turnaround
+            </div>
+            <div class="stat">
+              <strong>Clear</strong>
+              Estimates
+            </div>
+            <div class="stat">
+              <strong>Trusted</strong>
+              Local Service
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2 class="section-title" style="margin-top:0;">Typical watches we see</h2>
+          <p class="section-text">
+            Citizen Eco-Drive models, chronographs, everyday quartz watches, bracelet resizing,
+            clasp issues, charging concerns, and cosmetic wear that needs attention.
+          </p>
+          <div style="display:grid;gap:.8rem;">
+            <div class="contact-item">
+              <div class="icon">✓</div>
+              <div>
+                <strong>Honest assessment</strong><br>
+                <span style="color:var(--muted);">Clear advice on what should be repaired and what can wait.</span>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="icon">✓</div>
+              <div>
+                <strong>Respect for your time</strong><br>
+                <span style="color:var(--muted);">Straightforward service with practical turnaround expectations.</span>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="icon">✓</div>
+              <div>
+                <strong>Careful handling</strong><br>
+                <span style="color:var(--muted);">Attention to case, bracelet, seals, and finish during repair.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="process">
+      <div class="container">
+        <h2 class="section-title">How it works</h2>
+        <p class="section-text">
+          A simple process designed to make repairs easy and stress-free.
+        </p>
+
+        <div class="steps">
+          <div class="card">
+            <div class="step-num">1</div>
+            <h3>Bring in or send details</h3>
+            <p>Share the model, the issue, and any symptoms you’ve noticed.</p>
+          </div>
+
+          <div class="card">
+            <div class="step-num">2</div>
+            <h3>Inspection</h3>
+            <p>The watch is checked to identify the problem and recommend the right service.</p>
+          </div>
+
+          <div class="card">
+            <div class="step-num">3</div>
+            <h3>Repair</h3>
+            <p>Work is carried out carefully, with attention to reliability and finish.</p>
+          </div>
+
+          <div class="card">
+            <div class="step-num">4</div>
+            <h3>Ready to wear</h3>
+            <p>You get your watch back serviced, tested, and ready for daily use.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="reviews">
+      <div class="container">
+        <h2 class="section-title">What customers say</h2>
+        <p class="section-text">
+          Replace these with real reviews later.
+        </p>
+
+        <div class="testimonials">
+          <div class="card">
+            <blockquote>
+              “My Citizen Eco-Drive stopped holding charge. The issue was explained clearly, the repair
+              was quick, and the watch has been perfect ever since.”
+            </blockquote>
+            <div class="quote-name">— Anna K.</div>
+          </div>
+
+          <div class="card">
+            <blockquote>
+              “Very professional and easy to deal with. Battery replaced, bracelet adjusted, and the watch
+              looked better than when I brought it in.”
+            </blockquote>
+            <div class="quote-name">— Martin S.</div>
+          </div>
+
+          <div class="card">
+            <blockquote>
+              “Honest service and fair pricing. I appreciated the careful handling of a watch that means a lot to me.”
+            </blockquote>
+            <div class="quote-name">— David R.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container contact">
+        <div class="card">
+          <h2 class="section-title" style="margin-top:0;">Book a repair</h2>
+          <p class="section-text">
+            Ready to get your watch checked? Call, email, or visit during opening hours.
+          </p>
+
+          <div class="contact-list">
+            <div class="contact-item">
+              <div class="icon">📞</div>
+              <div>
+                <strong>Phone</strong><br>
+                <a href="tel:+43123456789" style="color:var(--muted);">+43 123 456 789</a>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="icon">✉️</div>
+              <div>
+                <strong>Email</strong><br>
+                <a href="mailto:hello@yourdomain.com" style="color:var(--muted);">hello@yourdomain.com</a>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="icon">📍</div>
+              <div>
+                <strong>Workshop</strong><br>
+                <span style="color:var(--muted);">Your Street 12, 1010 Vienna</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2 class="section-title" style="margin-top:0;">Opening hours</h2>
+          <div class="hours">
+            <div class="hours-row"><span>Monday</span><strong>09:00 – 18:00</strong></div>
+            <div class="hours-row"><span>Tuesday</span><strong>09:00 – 18:00</strong></div>
+            <div class="hours-row"><span>Wednesday</span><strong>09:00 – 18:00</strong></div>
+            <div class="hours-row"><span>Thursday</span><strong>09:00 – 18:00</strong></div>
+            <div class="hours-row"><span>Friday</span><strong>09:00 – 17:00</strong></div>
+            <div class="hours-row"><span>Saturday</span><strong>By appointment</strong></div>
+            <div class="hours-row" style="border-bottom:none;"><span>Sunday</span><strong>Closed</strong></div>
+          </div>
+
+          <div style="margin-top:1.4rem;">
+            <a class="btn btn-primary" href="mailto:hello@yourdomain.com">Request an Estimate</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>© 2026 Citizen Watch Repair. All rights reserved.</div>
+      <div>Independent repair service for Citizen watches.</div>
+    </div>
+  </footer>
+</body>
 </html>

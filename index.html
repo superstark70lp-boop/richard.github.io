@@ -1,584 +1,346 @@
 <!doctype html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bürgerliche Uhrenwerkstatt | Service für Citizen Uhren</title>
-  <meta name="description" content="Werkstatt für Service und Reparatur von Citizen Uhren: Batteriewechsel, Armbandservice, Diagnose und Wartung.">
+  <title>Werkstatt für Citizen Uhren</title>
+  <meta name="description" content="Reparatur, Batteriewechsel und Service für Citizen Uhren in Wien.">
   <style>
     :root{
-      --bg:#f3f4f2;
-      --surface:#ffffff;
-      --surface-2:#f8f8f6;
-      --text:#1f2a2e;
-      --muted:#617076;
-      --line:#d9dfdd;
-      --accent:#30545a;
-      --accent-soft:#e8efee;
-      --heading:#182125;
-      --shadow:0 10px 30px rgba(19,31,34,.06);
-      --radius:18px;
-      --max:1120px;
+      --bg:#f4f1ea;
+      --paper:#fffdf8;
+      --text:#222;
+      --muted:#666;
+      --line:#d8d2c7;
+      --accent:#2f4f4f;
+      --max:980px;
     }
 
     *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
+
     body{
       margin:0;
-      font-family:Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-      background:linear-gradient(180deg, #f6f7f5 0%, #f0f2ef 100%);
+      background:var(--bg);
       color:var(--text);
-      line-height:1.65;
+      font:16px/1.6 Arial, Helvetica, sans-serif;
     }
 
     h1,h2,h3{
-      margin:0 0 .7rem;
-      color:var(--heading);
-      letter-spacing:-0.02em;
-      line-height:1.15;
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight:normal;
+      line-height:1.2;
+      color:#1d1d1d;
+      margin:0 0 .6rem;
     }
 
-    h1{
-      font-size:clamp(2.4rem, 5vw, 4.2rem);
-      font-weight:700;
-    }
+    h1{font-size:clamp(2rem,4vw,3.5rem)}
+    h2{font-size:1.7rem}
+    h3{font-size:1.1rem}
 
-    h2{
-      font-size:clamp(1.5rem, 3vw, 2.2rem);
-      font-weight:650;
-    }
-
-    h3{
-      font-size:1.08rem;
-      font-weight:650;
-    }
-
-    p{margin:.3rem 0 0}
+    p{margin:.4rem 0 0}
     a{color:var(--accent);text-decoration:none}
     a:hover{text-decoration:underline}
 
-    .container{
+    .wrap{
       width:min(calc(100% - 2rem), var(--max));
       margin:0 auto;
     }
 
-    .small{
-      font-size:.95rem;
-      color:var(--muted);
-    }
-
     header{
-      position:sticky;
-      top:0;
-      z-index:20;
-      background:rgba(255,255,255,.86);
-      backdrop-filter:blur(12px);
-      border-bottom:1px solid rgba(217,223,221,.9);
+      border-bottom:1px solid var(--line);
+      background:var(--paper);
     }
 
-    .header-inner{
+    .topbar{
       display:flex;
-      align-items:center;
       justify-content:space-between;
+      align-items:flex-end;
       gap:1rem;
-      padding:1rem 0;
+      padding:1.1rem 0 1rem;
       flex-wrap:wrap;
     }
 
-    .brand{
-      display:flex;
-      flex-direction:column;
-      gap:.1rem;
+    .name{
+      font-family: Georgia, "Times New Roman", serif;
+      font-size:1.5rem;
     }
 
-    .brand strong{
-      font-size:1.02rem;
-      color:var(--heading);
-      font-weight:700;
-    }
-
-    .brand span{
-      font-size:.9rem;
+    .sub{
       color:var(--muted);
+      font-size:.95rem;
+      margin-top:.15rem;
     }
 
     nav{
       display:flex;
-      gap:1.2rem;
+      gap:1rem;
       flex-wrap:wrap;
+      font-size:.95rem;
     }
 
-    nav a{
-      color:var(--muted);
-      font-size:.96rem;
-    }
+    nav a{color:#444}
 
-    nav a:hover{
-      color:var(--heading);
-      text-decoration:none;
+    main{
+      padding:2rem 0 3rem;
     }
 
     .hero{
-      padding:4.5rem 0 3rem;
-    }
-
-    .hero-grid{
       display:grid;
-      grid-template-columns:1.2fr .8fr;
+      grid-template-columns:1.1fr .9fr;
       gap:2rem;
-      align-items:stretch;
+      align-items:start;
+      margin-bottom:3rem;
     }
 
-    .eyebrow{
-      display:inline-block;
-      background:var(--accent-soft);
-      color:var(--accent);
-      border:1px solid #d8e4e1;
-      border-radius:999px;
-      padding:.4rem .8rem;
-      font-size:.9rem;
-      font-weight:600;
-      margin-bottom:1rem;
+    .hero p{
+      max-width:38rem;
+      font-size:1.05rem;
     }
 
-    .lead{
-      max-width:42rem;
-      font-size:1.08rem;
-      color:var(--muted);
-      margin-top:.8rem;
+    .hero .intro{
+      color:#333;
     }
 
-    .hero-actions{
-      display:flex;
-      gap:.9rem;
-      flex-wrap:wrap;
-      margin-top:1.6rem;
-    }
-
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding:.88rem 1.15rem;
-      border-radius:12px;
-      font-weight:600;
-      transition:.18s ease;
-      border:1px solid transparent;
-    }
-
-    .btn-primary{
-      background:var(--accent);
-      color:#fff;
-    }
-
-    .btn-primary:hover{
-      text-decoration:none;
-      transform:translateY(-1px);
-      opacity:.96;
-    }
-
-    .btn-secondary{
-      background:transparent;
-      border-color:var(--line);
-      color:var(--heading);
-    }
-
-    .btn-secondary:hover{
-      text-decoration:none;
-      background:#fff;
-    }
-
-    .hero-card,
-    .card{
-      background:rgba(255,255,255,.88);
-      border:1px solid rgba(217,223,221,.95);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-    }
-
-    .hero-card{
-      padding:1.4rem;
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-      min-height:100%;
-    }
-
-    .hero-visual{
-      border-radius:14px;
-      min-height:240px;
-      background:
-        linear-gradient(135deg, rgba(48,84,90,.08), rgba(48,84,90,.02)),
-        linear-gradient(180deg, #f6f7f5, #ecefed);
+    .photo{
+      background:#e7e0d4;
       border:1px solid var(--line);
-      display:flex;
-      align-items:flex-end;
-      padding:1.2rem;
-      position:relative;
+      min-height:340px;
       overflow:hidden;
     }
 
-    .hero-visual::before{
-      content:"";
-      position:absolute;
-      width:180px;
-      height:180px;
-      border-radius:50%;
-      border:1px solid rgba(48,84,90,.12);
-      top:24px;
-      right:28px;
-    }
-
-    .hero-visual::after{
-      content:"";
-      position:absolute;
-      width:120px;
-      height:120px;
-      border-radius:50%;
-      border:1px solid rgba(48,84,90,.08);
-      top:54px;
-      right:58px;
-    }
-
-    .visual-label{
-      position:relative;
-      z-index:1;
-      background:rgba(255,255,255,.84);
-      border:1px solid rgba(217,223,221,.9);
-      border-radius:14px;
-      padding:1rem;
-      max-width:280px;
-    }
-
-    .visual-label strong{
+    .photo img{
       display:block;
-      margin-bottom:.35rem;
-      color:var(--heading);
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .photo-note{
+      padding:.7rem .9rem;
+      font-size:.9rem;
+      color:var(--muted);
+      border-top:1px solid var(--line);
+      background:rgba(255,255,255,.55);
+    }
+
+    .button{
+      display:inline-block;
+      margin-top:1.2rem;
+      padding:.7rem 1rem;
+      border:1px solid #b8b0a3;
+      color:#222;
+      background:#f7f3eb;
+    }
+
+    .button:hover{
+      background:#f1ece2;
+      text-decoration:none;
     }
 
     section{
-      padding:1.2rem 0 3rem;
-    }
-
-    .section-head{
-      max-width:44rem;
-      margin-bottom:1.6rem;
-    }
-
-    .section-head p{
-      color:var(--muted);
-    }
-
-    .grid-3{
-      display:grid;
-      grid-template-columns:repeat(3, 1fr);
-      gap:1rem;
-    }
-
-    .grid-2{
-      display:grid;
-      grid-template-columns:repeat(2, 1fr);
-      gap:1rem;
-    }
-
-    .card{
-      padding:1.25rem;
-    }
-
-    .icon{
-      width:42px;
-      height:42px;
-      border-radius:12px;
-      background:var(--accent-soft);
-      border:1px solid #d8e4e1;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size:1.05rem;
-      margin-bottom:.9rem;
-    }
-
-    .card p, .card li{
-      color:var(--muted);
-    }
-
-    .list{
-      padding-left:1.1rem;
-      margin:.6rem 0 0;
-    }
-
-    .list li{
-      margin:.35rem 0;
-    }
-
-    .muted-box{
-      background:var(--surface-2);
-      border:1px solid var(--line);
-      border-radius:16px;
-      padding:1rem;
-      margin-top:1rem;
-      color:var(--muted);
-    }
-
-    .contact-grid{
-      display:grid;
-      grid-template-columns:1fr .9fr;
-      gap:1rem;
-    }
-
-    .contact-row{
-      display:grid;
-      grid-template-columns:120px 1fr;
-      gap:1rem;
-      padding:.9rem 0;
       border-top:1px solid var(--line);
+      padding:1.6rem 0;
     }
 
-    .contact-row:first-child{
-      border-top:none;
-      padding-top:0;
+    .cols{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:2rem;
+    }
+
+    ul{
+      margin:.6rem 0 0 1.2rem;
+      padding:0;
+    }
+
+    li{margin:.3rem 0}
+
+    .list-simple{
+      list-style:none;
+      margin:0;
+      padding:0;
+    }
+
+    .list-simple li{
+      padding:.55rem 0;
+      border-bottom:1px solid #e5dfd4;
+    }
+
+    .list-simple li:last-child{
+      border-bottom:none;
+    }
+
+    .muted{
+      color:var(--muted);
+    }
+
+    .contact{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:2rem;
+    }
+
+    .box{
+      background:var(--paper);
+      border:1px solid var(--line);
+      padding:1rem 1.1rem;
+    }
+
+    .row{
+      margin:.7rem 0 0;
     }
 
     .label{
+      display:block;
       color:var(--muted);
-      font-size:.95rem;
+      font-size:.92rem;
     }
 
     footer{
       border-top:1px solid var(--line);
-      padding:1.5rem 0 2.3rem;
+      padding:1.2rem 0 2rem;
       color:var(--muted);
       font-size:.94rem;
-      background:rgba(255,255,255,.55);
     }
 
-    @media (max-width: 920px){
-      .hero-grid,
-      .grid-3,
-      .grid-2,
-      .contact-grid{
+    @media (max-width: 820px){
+      .hero,
+      .cols,
+      .contact{
         grid-template-columns:1fr;
       }
 
-      .contact-row{
-        grid-template-columns:1fr;
-        gap:.25rem;
+      .photo{
+        min-height:240px;
       }
     }
   </style>
 </head>
 <body>
   <header>
-    <div class="container header-inner">
-      <div class="brand">
-        <strong>Bürgerliche Uhrenwerkstatt</strong>
-        <span>Service und Reparatur für Citizen Uhren</span>
+    <div class="wrap topbar">
+      <div>
+        <div class="name">Werkstatt für Citizen Uhren</div>
+        <div class="sub">Reparatur, Batteriewechsel und Service in Wien</div>
       </div>
 
       <nav>
         <a href="#leistungen">Leistungen</a>
         <a href="#werkstatt">Werkstatt</a>
-        <a href="#ablauf">Ablauf</a>
         <a href="#kontakt">Kontakt</a>
       </nav>
     </div>
   </header>
 
-  <main>
-    <section class="hero">
-      <div class="container hero-grid">
-        <div>
-          <div class="eyebrow">Sachlich. Sorgfältig. Transparent.</div>
-          <h1>Reparatur und Service für Citizen Uhren</h1>
-          <p class="lead">
-            Batteriewechsel, Diagnose, Armbandservice und allgemeine Wartung für Citizen Uhren.
-            Die Website ist bewusst klar gehalten: mit nachvollziehbaren Informationen, realen Kontaktdaten
-            und ohne übertriebene Werbesprache.
-          </p>
-
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#kontakt">Kontakt aufnehmen</a>
-            <a class="btn btn-secondary" href="tel:+43123456789">+43 123 456 789</a>
-          </div>
-        </div>
-
-        <aside class="hero-card">
-          <div class="hero-visual">
-            <div class="visual-label">
-              <strong>Werkstatt in Wien</strong>
-              <div class="small">
-                Reparaturen, kleinere Servicearbeiten und Prüfung typischer Probleme bei Citizen Uhren.
-              </div>
-            </div>
-          </div>
-
-          <div class="muted-box">
-            <strong style="display:block;color:var(--heading);margin-bottom:.35rem;">Hinweis</strong>
-            Diese Seite wirkt am vertrauenswürdigsten mit echten Angaben:
-            Name der Werkstatt, reale Adresse, Telefonnummer, Öffnungszeiten und später ein echtes Foto.
-          </div>
-        </aside>
+  <main class="wrap">
+    <div class="hero">
+      <div>
+        <h1>Citizen Uhren<br>reparieren und instand halten</h1>
+        <p class="intro">
+          Repariert werden vor allem Citizen Modelle mit typischen Alltagsproblemen:
+          Batteriewechsel, Armbandarbeiten, kleinere Defekte und die erste Prüfung bei
+          Funktionsstörungen.
+        </p>
+        <p class="muted">
+          Für Anfragen genügt meist ein kurzer Anruf oder eine E-Mail mit Modell und Problem.
+        </p>
+        <a class="button" href="#kontakt">Kontakt</a>
       </div>
-    </section>
+
+      <div class="photo">
+        <img src="werkstatt.jpg" alt="Werkbank oder Foto aus der Uhrenwerkstatt">
+        <div class="photo-note">Am besten hier ein echtes Foto aus der Werkstatt einsetzen.</div>
+      </div>
+    </div>
 
     <section id="leistungen">
-      <div class="container">
-        <div class="section-head">
+      <div class="cols">
+        <div>
           <h2>Leistungen</h2>
-          <p>
-            Schwerpunkt auf typischen Arbeiten im Alltag: übersichtlich erklärt und ohne unnötige Werbeversprechen.
-          </p>
+          <ul class="list-simple">
+            <li>Batteriewechsel</li>
+            <li>Armband kürzen oder ersetzen</li>
+            <li>Federstege und Schließen prüfen</li>
+            <li>Ersteinschätzung bei Lade- oder Gangproblemen</li>
+            <li>Kleinere Service- und Reparaturarbeiten</li>
+          </ul>
         </div>
 
-        <div class="grid-3">
-          <article class="card">
-            <div class="icon">⌚</div>
-            <h3>Batteriewechsel</h3>
-            <p>
-              Austausch der Batterie mit Blick auf Gehäusezustand, Dichtungen und allgemeine Funktion.
-            </p>
-          </article>
-
-          <article class="card">
-            <div class="icon">🔧</div>
-            <h3>Armbandservice</h3>
-            <p>
-              Kürzen, Bandwechsel, Federstege, Schließenprobleme und kleinere Anpassungen.
-            </p>
-          </article>
-
-          <article class="card">
-            <div class="icon">⚙️</div>
-            <h3>Diagnose</h3>
-            <p>
-              Prüfung bei Ladeproblemen, ungenauem Gang oder allgemeiner Funktionsstörung.
-            </p>
-          </article>
+        <div>
+          <h2>Häufige Anliegen</h2>
+          <p class="muted">
+            Viele Uhren kommen wegen ganz einfachen Dingen in die Werkstatt:
+            leere Batterie, loses Band, defekte Schließe oder eine Citizen Eco-Drive,
+            die nicht mehr richtig lädt.
+          </p>
+          <p class="muted">
+            Nicht jede Reparatur ist aufwendig. Oft reicht schon eine klare Prüfung,
+            um zu sehen, was sinnvoll ist.
+          </p>
         </div>
       </div>
     </section>
 
     <section id="werkstatt">
-      <div class="container">
-        <div class="grid-2">
-          <div class="card">
-            <h2>Die Werkstatt</h2>
-            <p>
-              Eine Uhrenreparatur-Website muss nicht spektakulär wirken. Häufig entsteht Vertrauen gerade dann,
-              wenn Leistungen, Kontaktdaten und Ablauf nachvollziehbar dargestellt sind.
-            </p>
-            <p>
-              Deshalb ist diese Gestaltung etwas hochwertiger, bleibt aber bewusst zurückhaltend:
-              klare Typografie, dezente Farben und sachliche Texte.
-            </p>
-          </div>
-
-          <div class="card">
-            <h2>Typische Arbeiten</h2>
-            <ul class="list">
-              <li>Batteriewechsel bei Citizen Uhren</li>
-              <li>Prüfung von Eco-Drive Ladeproblemen</li>
-              <li>Armband kürzen oder ersetzen</li>
-              <li>Kleinere Reparaturen und Sichtprüfung</li>
-              <li>Ersteinschätzung bei Funktionsproblemen</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="ablauf">
-      <div class="container">
-        <div class="section-head">
-          <h2>Ablauf</h2>
-          <p>
-            Ein einfacher und transparenter Prozess wirkt meist seriöser als laute Verkaufsbotschaften.
+      <div class="cols">
+        <div>
+          <h2>Zur Werkstatt</h2>
+          <p class="muted">
+            Diese Seite ist bewusst schlicht gehalten. Wichtig sind vor allem gute Erreichbarkeit,
+            nachvollziehbare Angaben und ein ruhiger Gesamteindruck.
+          </p>
+          <p class="muted">
+            Später können noch ein echtes Foto, ein Impressum und eine Anfahrtsbeschreibung ergänzt werden.
           </p>
         </div>
 
-        <div class="grid-3">
-          <div class="card">
-            <div class="icon">1</div>
-            <h3>Anfrage</h3>
-            <p>
-              Per Telefon, E-Mail oder vor Ort. Idealerweise mit kurzer Beschreibung des Problems.
-            </p>
-          </div>
-
-          <div class="card">
-            <div class="icon">2</div>
-            <h3>Prüfung</h3>
-            <p>
-              Sichtung der Uhr und Einschätzung, welche Arbeit sinnvoll ist.
-            </p>
-          </div>
-
-          <div class="card">
-            <div class="icon">3</div>
-            <h3>Rückmeldung</h3>
-            <p>
-              Information zum weiteren Vorgehen, zu kleinen Arbeiten direkt oder zu einem möglichen Reparaturweg.
-            </p>
-          </div>
+        <div>
+          <h2>Was hilfreich ist</h2>
+          <ul>
+            <li>Modell oder Foto der Uhr</li>
+            <li>kurze Beschreibung des Problems</li>
+            <li>wenn möglich: seit wann der Fehler besteht</li>
+          </ul>
         </div>
       </div>
     </section>
 
     <section id="kontakt">
-      <div class="container">
-        <div class="section-head">
-          <h2>Kontakt</h2>
-          <p>
-            Trage hier echte Daten ein. Das ist wichtiger für Vertrauen als jedes Design.
-          </p>
-        </div>
+      <h2>Kontakt</h2>
 
-        <div class="contact-grid">
-          <div class="card">
-            <div class="contact-row">
-              <div class="label">Werkstatt</div>
-              <div>Bürgerliche Uhrenwerkstatt</div>
-            </div>
-
-            <div class="contact-row">
-              <div class="label">Telefon</div>
-              <div><a href="tel:+43123456789">+43 123 456 789</a></div>
-            </div>
-
-            <div class="contact-row">
-              <div class="label">E-Mail</div>
-              <div><a href="mailto:hello@yourdomain.com">hello@yourdomain.com</a></div>
-            </div>
-
-            <div class="contact-row">
-              <div class="label">Adresse</div>
-              <div>Deine Straße 12, 1010 Wien</div>
-            </div>
+      <div class="contact">
+        <div class="box">
+          <div class="row">
+            <span class="label">Telefon</span>
+            <a href="tel:+43123456789">+43 123 456 789</a>
           </div>
 
-          <div class="card">
-            <div class="contact-row">
-              <div class="label">Montag–Freitag</div>
-              <div>09:00–18:00</div>
-            </div>
+          <div class="row">
+            <span class="label">E-Mail</span>
+            <a href="mailto:hello@yourdomain.com">hello@yourdomain.com</a>
+          </div>
 
-            <div class="contact-row">
-              <div class="label">Samstag</div>
-              <div>Nach Vereinbarung</div>
-            </div>
+          <div class="row">
+            <span class="label">Adresse</span>
+            Mustergasse 12, 1010 Wien
+          </div>
+        </div>
 
-            <div class="contact-row">
-              <div class="label">Sonntag</div>
-              <div>Geschlossen</div>
-            </div>
+        <div class="box">
+          <div class="row">
+            <span class="label">Öffnungszeiten</span>
+            Montag bis Freitag<br>
+            09:00–18:00
+          </div>
 
-            <div class="contact-row">
-              <div class="label">Hinweis</div>
-              <div>
-                Auf Wunsch kann hier später noch ein Link zu Google Maps, ein Impressum
-                und eine Datenschutzerklärung ergänzt werden.
-              </div>
-            </div>
+          <div class="row">
+            <span class="label">Samstag</span>
+            Nach Vereinbarung
+          </div>
+
+          <div class="row">
+            <span class="label">Sonntag</span>
+            Geschlossen
           </div>
         </div>
       </div>
@@ -586,8 +348,8 @@
   </main>
 
   <footer>
-    <div class="container">
-      © 2026 Bürgerliche Uhrenwerkstatt
+    <div class="wrap">
+      © 2026 Werkstatt für Citizen Uhren
     </div>
   </footer>
 </body>
